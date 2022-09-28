@@ -40,3 +40,10 @@ class Artifact(Framework.TestCase):
             repr(artifact),
             f'Artifact(name="vscode-codeql-extension", id={artifact_id})',
         )
+
+    def testDelete(self):
+        artifact_id = 'XXXX'
+        repo_name = 'YYYY'
+        repo = self.g.get_repo(repo_name)
+        artifact = repo.get_artifact(artifact_id)
+        self.assertTrue(artifact.delete())
